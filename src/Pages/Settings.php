@@ -138,4 +138,9 @@ class Settings extends Page implements HasForms
     {
         return auth()->user()?->canManageSettings() ?? true;
     }
+
+        public function mountCanAuthorizeAccess(): void
+    {
+        abort_unless(static::canAccess(), 404);
+    }
 }
